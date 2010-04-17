@@ -18,6 +18,7 @@ public class Expone {
              this.Media = Media;
              resultados = new double[obs];
              this.obs = obs;
+
     }
 
     public  void Expone(){
@@ -30,6 +31,8 @@ public class Expone {
      x = ((-1)*Media)*Math.log(r);
      resultados[i] = x;
        }//fin del for
+
+
 
     }// fin del metodo
 
