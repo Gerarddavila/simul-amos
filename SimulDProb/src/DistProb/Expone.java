@@ -4,6 +4,9 @@
  */
 
 package DistProb;
+
+import interfaces.Grafica;
+
 /**
  *
  * @author Juan
@@ -33,7 +36,8 @@ public class Expone {
        }//fin del for
 
 
-
+     Grafica gra = new Grafica("hola",resultados);
+gra.setVisible(true);
     }// fin del metodo
 
 
