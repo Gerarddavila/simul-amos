@@ -11,6 +11,7 @@ package DistProb;
 public class Poison {
 
     double media;
+    int[] observaciones=null;
 
     public Poison(double media) {
         this.media = media;
@@ -31,17 +32,16 @@ public class Poison {
         return x;
     }
 
-    public int[] getObservaciones(int observaciones) {
-        return getObservaciones(observaciones, this.media);
+    public int[] getObservaciones(int nobservaciones) {
+        return getObservaciones(nobservaciones, this.media);
     }
 
-    public int[] getObservaciones(int observaciones, double media) {
-        int[] ret = new int[observaciones];
-        for (int i = 0; i < ret.length; i++) {
-            ret[i] = Poison(media);
+    public int[] getObservaciones(int nObservaciones, double media) {
+        this.observaciones = new int[nObservaciones];
+        for (int i = 0; i < nObservaciones; i++) {
+            this.observaciones[i] = Poison(media);
         }
-        System.out.println("");
-        return ret;
+        return this.observaciones;
     }
 
     public double getMedia() {
