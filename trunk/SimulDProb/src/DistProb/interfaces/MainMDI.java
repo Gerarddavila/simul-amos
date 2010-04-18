@@ -92,6 +92,11 @@ public class MainMDI extends javax.swing.JFrame {
         uniformeButton.setFocusable(false);
         uniformeButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         uniformeButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        uniformeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uniformeButtonActionPerformed(evt);
+            }
+        });
         jPanel2.add(uniformeButton);
 
         exponencialButton.setText("Exponencial");
@@ -152,6 +157,10 @@ public class MainMDI extends javax.swing.JFrame {
         addInternalWindow("poison");
     }//GEN-LAST:event_poisonButtonActionPerformed
 
+    private void uniformeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uniformeButtonActionPerformed
+        addInternalWindow("uniforme");
+    }//GEN-LAST:event_uniformeButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -170,6 +179,7 @@ public class MainMDI extends javax.swing.JFrame {
         } else if (ventana.compareTo("poison") == 0) {
             jInternalFrame=new PoisonGUI();
         } else if (ventana.compareTo("uniforme") == 0) {
+            jInternalFrame=new UniforGUI();
         } else if (ventana.compareTo("exponencial") == 0) {
         } else if (ventana.compareTo("normal") == 0) {
         }

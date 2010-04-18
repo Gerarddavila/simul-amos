@@ -26,10 +26,10 @@ public class Unifor {
     public double Unifor(double a, double b) {
         double r = Math.random();
         double x = a + (b - a) * r;
-        return 0;
+        return x;
     }
 
-    double[] getObservaciones(int nObservaciones) {
+    public double[] getObservaciones(int nObservaciones) {
         return getObservaciones(nObservaciones, this.a, this.b);
     }
 
