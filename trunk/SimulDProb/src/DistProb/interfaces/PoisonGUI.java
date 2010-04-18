@@ -8,7 +8,6 @@
  *
  * Created on 04-17-2010, 02:30:57 PM
  */
-
 package DistProb.interfaces;
 
 import DistProb.Poison;
@@ -23,7 +22,9 @@ import validadores.validadoresformato.EnteroValidador;
  * @author Steve
  */
 public class PoisonGUI extends javax.swing.JInternalFrame {
-GrupoValidador validadorFormulario = new GrupoValidador();
+
+    GrupoValidador validadorFormulario = new GrupoValidador();
+
     /** Creates new form PoisonGUI */
     public PoisonGUI() {
         initComponents();
@@ -32,9 +33,9 @@ GrupoValidador validadorFormulario = new GrupoValidador();
                 "Ingrese el valor de la media",
                 new DoubleValidador("Ingrese un numero real", DoubleValidador.CONFIGURACIONES.POSITIVO, "Dato incorrecto. Ingrese un numero real"));
 
-        observacionesValidador.configurarValidacion(paramObservacionesTextField, true, "Ingrese el numero de observaciones", new EnteroValidador("Ingrese el numero entero",EnteroValidador.CONFIGURACIONES.POSITIVO,"Dato Incorrecto. Ingrese un entero"));
-        validadorFormulario.add(mediaValidador,observacionesValidador);
-
+        observacionesValidador.configurarValidacion(paramObservacionesTextField, true, "Ingrese el numero de observaciones", new EnteroValidador("Ingrese el numero entero", EnteroValidador.CONFIGURACIONES.POSITIVO, "Dato Incorrecto. Ingrese un entero"));
+        validadorFormulario.add(mediaValidador, observacionesValidador);
+        jSplitPane1.setVisible(false);
     }
 
     /** This method is called from within the constructor to
@@ -55,15 +56,16 @@ GrupoValidador validadorFormulario = new GrupoValidador();
         paramObservacionesTextField = new javax.swing.JTextField();
         observacionesValidador = new validadores.api.ValidadorJTextComponent();
         contenedorPanel = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jSplitPane1 = new javax.swing.JSplitPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         datosTable = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        setResizable(true);
         setTitle("Distribución Poison");
 
         parametrosPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -77,78 +79,55 @@ GrupoValidador validadorFormulario = new GrupoValidador();
             }
         });
 
-        jLabel4.setText("Numero de Observaiones");
-
-        paramObservacionesTextField.setText("jTextField1");
+        jLabel4.setText("<html>Numero de<br>Observaciones</html>");
 
         javax.swing.GroupLayout parametrosPanelLayout = new javax.swing.GroupLayout(parametrosPanel);
         parametrosPanel.setLayout(parametrosPanelLayout);
         parametrosPanelLayout.setHorizontalGroup(
             parametrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(parametrosPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(parametrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(simularButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(parametrosPanelLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(simularButton))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, parametrosPanelLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(paramMediaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(parametrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(parametrosPanelLayout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel1)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(mediaValidador, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE))
-                    .addGroup(parametrosPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4)
+                        .addGroup(parametrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(paramMediaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(paramObservacionesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(paramObservacionesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(observacionesValidador, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)))
+                        .addGroup(parametrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mediaValidador, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                            .addComponent(observacionesValidador, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         parametrosPanelLayout.setVerticalGroup(
             parametrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, parametrosPanelLayout.createSequentialGroup()
+            .addGroup(parametrosPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(parametrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mediaValidador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(parametrosPanelLayout.createSequentialGroup()
-                        .addGroup(parametrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(paramMediaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(2, 2, 2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(parametrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(paramMediaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mediaValidador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(parametrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(paramObservacionesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(observacionesValidador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(simularButton)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(parametrosPanel, java.awt.BorderLayout.NORTH);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel2.setText("El grafico aqui ;)");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel2)
-                .addContainerGap(420, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel2)
-                .addContainerGap(251, Short.MAX_VALUE))
-        );
+        jSplitPane1.setDividerLocation(150);
+        jSplitPane1.setContinuousLayout(true);
 
         datosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -163,31 +142,42 @@ GrupoValidador validadorFormulario = new GrupoValidador();
         ));
         jScrollPane1.setViewportView(datosTable);
 
-        jLabel3.setText("Valores Generados");
+        jSplitPane1.setLeftComponent(jScrollPane1);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel2.setText("El grafico aqui ;)");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jLabel2)
+                .addContainerGap(389, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel2)
+                .addContainerGap(266, Short.MAX_VALUE))
+        );
+
+        jSplitPane1.setRightComponent(jPanel1);
 
         javax.swing.GroupLayout contenedorPanelLayout = new javax.swing.GroupLayout(contenedorPanel);
         contenedorPanel.setLayout(contenedorPanelLayout);
         contenedorPanelLayout.setHorizontalGroup(
             contenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenedorPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(contenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
         );
         contenedorPanelLayout.setVerticalGroup(
             contenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorPanelLayout.createSequentialGroup()
+            .addGroup(contenedorPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(contenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)))
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -197,28 +187,35 @@ GrupoValidador validadorFormulario = new GrupoValidador();
     }// </editor-fold>//GEN-END:initComponents
 
     private void simularButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simularButtonActionPerformed
-        if(validadorFormulario.validar()){
+        if (validadorFormulario.validar()) {
             double media = Double.parseDouble(paramMediaTextField.getText());
             int observaciones = Integer.parseInt(paramObservacionesTextField.getText());
             Poison p = new Poison(media);
-            arrayToModel(p.getObservaciones(observaciones));
-           datosTable.setModel(new DefaultTableModel(p.getObservaciones(observaciones), new String[]{"Datos"} ) );
-
+            //arrayToModel(p.getObservaciones(observaciones));
+            datosTable.setModel(arrayToModel(p.getObservaciones(observaciones)));
+            jSplitPane1.setVisible(true);
         }
     }//GEN-LAST:event_simularButtonActionPerformed
 
-    public DefaultTableModel arrayToModel(double[] datos){
-        return null;
+    public DefaultTableModel arrayToModel(double[] datos) {
+        Object[][] odatos = new Object[datos.length][2];
+        for (int i = 0; i < datos.length; i++) {
+            odatos[i][0] = 1 + i;
+            odatos[i][1] = datos[i];
+        }
+        Object[] coln = new Object[]{"Observacion", "Dato"};
+        DefaultTableModel dtm = new DefaultTableModel(odatos, coln);
+        return dtm;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenedorPanel;
     private javax.swing.JTable datosTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSplitPane jSplitPane1;
     private validadores.api.ValidadorJTextComponent mediaValidador;
     private validadores.api.ValidadorJTextComponent observacionesValidador;
     private javax.swing.JTextField paramMediaTextField;
@@ -226,5 +223,4 @@ GrupoValidador validadorFormulario = new GrupoValidador();
     private javax.swing.JPanel parametrosPanel;
     private javax.swing.JButton simularButton;
     // End of variables declaration//GEN-END:variables
-
 }

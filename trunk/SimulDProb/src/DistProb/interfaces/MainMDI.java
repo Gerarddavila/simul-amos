@@ -10,6 +10,9 @@
  */
 package DistProb.interfaces;
 
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 
 /**
@@ -171,6 +174,7 @@ public class MainMDI extends javax.swing.JFrame {
         } else if (ventana.compareTo("normal") == 0) {
         }
         jInternalFrame.setVisible(true);
+        jInternalFrame.setSize(contenedorDesktopPane.getSize());
         contenedorDesktopPane.add(jInternalFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
     }
