@@ -27,7 +27,7 @@ public class Poison {
         double prod = Math.random();
         while (prod >= k) {
             x++;
-            prod = Math.random();
+            prod = prod*Math.random();
         }
         return x;
     }

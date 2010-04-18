@@ -6,7 +6,7 @@
     <Property name="iconifiable" type="boolean" value="true"/>
     <Property name="maximizable" type="boolean" value="true"/>
     <Property name="resizable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="Distribuci&#xf3;n Poison"/>
+    <Property name="title" type="java.lang.String" value="Distribuci&#xf3;n Uniforme"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -43,28 +43,30 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel1" min="-2" pref="71" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="paramATextField" min="-2" pref="131" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="aValidador" pref="430" max="32767" attributes="2"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jLabel2" min="-2" pref="71" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="paramBTextField" min="-2" pref="131" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="bValidador" pref="430" max="32767" attributes="2"/>
+                      </Group>
                       <Component id="simularButton" alignment="0" min="-2" pref="136" max="-2" attributes="1"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="paramMediaTextField" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
-                              <Component id="paramObservacionesTextField" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="paramObservacionesTextField" min="-2" pref="131" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="mediaValidador" alignment="0" pref="430" max="32767" attributes="2"/>
-                              <Component id="observacionesValidador" alignment="0" pref="430" max="32767" attributes="2"/>
-                          </Group>
+                          <Component id="observacionesValidador" pref="430" max="32767" attributes="2"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -78,9 +80,15 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="paramMediaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="paramATextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="mediaValidador" min="-2" max="-2" attributes="0"/>
+                      <Component id="aValidador" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="paramBTextField" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="bValidador" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -98,12 +106,12 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Media:"/>
+            <Property name="text" type="java.lang.String" value="a"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="paramMediaTextField">
+        <Component class="javax.swing.JTextField" name="paramATextField">
         </Component>
-        <Component class="validadores.api.ValidadorJTextComponent" name="mediaValidador">
+        <Component class="validadores.api.ValidadorJTextComponent" name="aValidador">
         </Component>
         <Component class="javax.swing.JButton" name="simularButton">
           <Properties>
@@ -121,6 +129,15 @@
         <Component class="javax.swing.JTextField" name="paramObservacionesTextField">
         </Component>
         <Component class="validadores.api.ValidadorJTextComponent" name="observacionesValidador">
+        </Component>
+        <Component class="javax.swing.JTextField" name="paramBTextField">
+        </Component>
+        <Component class="validadores.api.ValidadorJTextComponent" name="bValidador">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="b"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
