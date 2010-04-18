@@ -194,6 +194,7 @@ public class PoisonGUI extends javax.swing.JInternalFrame {
             //arrayToModel(p.getObservaciones(observaciones));
             datosTable.setModel(arrayToModel(p.getObservaciones(observaciones)));
             jSplitPane1.setVisible(true);
+            contenedorPanel.updateUI();
         }
     }//GEN-LAST:event_simularButtonActionPerformed
 
