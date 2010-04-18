@@ -70,6 +70,11 @@ public class MainMDI extends javax.swing.JFrame {
         geometricaButton.setFocusable(false);
         geometricaButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         geometricaButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        geometricaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                geometricaButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(geometricaButton);
 
         poisonButton.setText("Poison");
@@ -103,12 +108,22 @@ public class MainMDI extends javax.swing.JFrame {
         exponencialButton.setFocusable(false);
         exponencialButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         exponencialButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        exponencialButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exponencialButtonActionPerformed(evt);
+            }
+        });
         jPanel2.add(exponencialButton);
 
         normalButton.setText("Normal");
         normalButton.setFocusable(false);
         normalButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         normalButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        normalButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                normalButtonActionPerformed(evt);
+            }
+        });
         jPanel2.add(normalButton);
 
         jPanel3.add(jPanel2);
@@ -161,6 +176,18 @@ public class MainMDI extends javax.swing.JFrame {
         addInternalWindow("uniforme");
     }//GEN-LAST:event_uniformeButtonActionPerformed
 
+    private void geometricaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_geometricaButtonActionPerformed
+        addInternalWindow("geometrica");
+    }//GEN-LAST:event_geometricaButtonActionPerformed
+
+    private void exponencialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exponencialButtonActionPerformed
+        addInternalWindow("exponencial");
+    }//GEN-LAST:event_exponencialButtonActionPerformed
+
+    private void normalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_normalButtonActionPerformed
+        addInternalWindow("normal");
+    }//GEN-LAST:event_normalButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -176,12 +203,15 @@ public class MainMDI extends javax.swing.JFrame {
     public void addInternalWindow(String ventana) {
         JInternalFrame jInternalFrame =null;
         if (ventana.compareTo("geometrica") == 0) {
+            jInternalFrame=new GeometricaGUI();
         } else if (ventana.compareTo("poison") == 0) {
             jInternalFrame=new PoisonGUI();
         } else if (ventana.compareTo("uniforme") == 0) {
             jInternalFrame=new UniforGUI();
         } else if (ventana.compareTo("exponencial") == 0) {
+            jInternalFrame=new ExponencialGUI();
         } else if (ventana.compareTo("normal") == 0) {
+            jInternalFrame=new NormalGUI();
         }
         jInternalFrame.setVisible(true);
         jInternalFrame.setSize(contenedorDesktopPane.getSize());
