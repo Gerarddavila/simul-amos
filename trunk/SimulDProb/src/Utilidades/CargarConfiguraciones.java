@@ -45,7 +45,8 @@ public class CargarConfiguraciones{
         
         try {
             pro.setProperty(key, value);
-            String url=this.getClass().getResource("config.properties").getPath().toString();
+            //String url=this.getClass().getResource("config.properties").getPath().toString();
+            String url="config.properties";
             FileOutputStream fos = new FileOutputStream(url);
             pro.store(fos, null);
             fos.close();
