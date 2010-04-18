@@ -8,6 +8,7 @@ package interfaces;
     import java.awt.Color;
     import java.awt.Dimension;
     import java.awt.Font;
+import java.util.ArrayList;
 
     import javax.swing.JPanel;
 
@@ -30,11 +31,12 @@ package interfaces;
 
 
        double resultados[];
-       int tamanio = resultados.length;
+       int tamanio = 0;
 
        public Grafica(String title,double resultados[]) {
            super(title);
            this.resultados = resultados;
+           tamanio=resultados.length;
            CategoryDataset dataset = createDataset();
            JFreeChart chart = createChart(dataset);
            ChartPanel panel = new ChartPanel(chart);
@@ -82,9 +84,11 @@ package interfaces;
 
           /* while (salir==1){
                       }*/
+           java.util.Arrays.sort(resultados);
+
 
            for(int i = 0; i<tamanio ; i++){
-               dataset.addValue(resultados[i], "Continua", ""+i);
+               dataset.addValue(i, "Continua", ""+resultados[i]);
            }
           /* dataset.addValue(212, "Continua", "x");
            dataset.addValue(504, "Continua", "y");
