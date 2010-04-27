@@ -13,6 +13,7 @@ package DistProb.interfaces;
 import DistProb.Normal;
 import DistProb.Poison;
 import interfaces.Grafica;
+import interfaces.GraficaContinua;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import validadores.api.GrupoValidador;
@@ -203,7 +204,7 @@ public class NormalGUI extends javax.swing.JInternalFrame {
             //arrayToModel(p.getObservaciones(observaciones));
             datosTable.setModel(arrayToModel(datos));
 
-            Grafica g = new Grafica("Grafico", datos);
+            GraficaContinua g = new GraficaContinua("Grafico", datos);
             graficaPanel.removeAll();
             graficaPanel.add(g.createDemoPanel());
             
