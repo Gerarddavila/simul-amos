@@ -103,9 +103,9 @@ public class Expo extends javax.swing.JInternalFrame {
 
         int miu = Integer.parseInt(tmedia.getText());
         int obs = Integer.parseInt(tobs.getText());
-        Expone x = new Expone(miu,obs);
-        x.Expone();
-        x.mostrar();
+//        Expone x = new Expone(miu,obs);
+//        x.Expone();
+//        x.mostrar();
 }//GEN-LAST:event_jButton1ActionPerformed
 
 
