@@ -179,8 +179,9 @@ public class GeometricaGUI extends javax.swing.JInternalFrame {
             double[] datos = geo.getObservaciones(observaciones,q);
 
            double[][] frec = new DistribucionProbabilidadUtil().obtenerTablaFrecuencia(datos);
+           double[][] prob = new DistribucionProbabilidadUtil().obtenerProbabilidad(frec, observaciones);
             //arrayToModel(p.getObservaciones(observaciones));
-            datosTable.setModel(arrayToModel(datos));
+            datosTable.setModel(arrayToModel(prob));
 
             Grafica g = new Grafica("Grafico", datos);
             graficaPanel.removeAll();
@@ -191,11 +192,11 @@ public class GeometricaGUI extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_simularButtonActionPerformed
 
-    public DefaultTableModel arrayToModel(double[] datos) {
+    public DefaultTableModel arrayToModel(double[][] datos) {
         Object[][] odatos = new Object[datos.length][2];
         for (int i = 0; i < datos.length; i++) {
-            odatos[i][0] = 1 + i;
-            odatos[i][1] = datos[i];
+            odatos[i][0] = datos[i][0];
+            odatos[i][1] = datos[i][1];
         }
         Object[] coln = new Object[]{"Observacion", "Dato"};
         DefaultTableModel dtm = new DefaultTableModel(odatos, coln);
