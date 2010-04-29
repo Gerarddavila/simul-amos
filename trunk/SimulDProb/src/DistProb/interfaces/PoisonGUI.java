@@ -10,6 +10,7 @@
  */
 package DistProb.interfaces;
 
+import Archivos.Archivos;
 import DistProb.Poison;
 import interfaces.Grafica;
 import javax.swing.JOptionPane;
@@ -23,7 +24,7 @@ import validadores.validadoresformato.EnteroValidador;
  * @author Steve
  */
 public class PoisonGUI extends javax.swing.JInternalFrame {
-
+    double[] datos=null;
     GrupoValidador validadorFormulario = new GrupoValidador();
 
     /** Creates new form PoisonGUI */
@@ -56,6 +57,8 @@ public class PoisonGUI extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         paramObservacionesTextField = new javax.swing.JTextField();
         observacionesValidador = new validadores.api.ValidadorJTextComponent();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         contenedorPanel = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -81,6 +84,15 @@ public class PoisonGUI extends javax.swing.JInternalFrame {
 
         jLabel4.setText("<html>Numero de<br>Observaciones</html>");
 
+        jButton2.setText("Guardar Resultados");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Cerrar");
+
         javax.swing.GroupLayout parametrosPanelLayout = new javax.swing.GroupLayout(parametrosPanel);
         parametrosPanel.setLayout(parametrosPanelLayout);
         parametrosPanelLayout.setHorizontalGroup(
@@ -88,7 +100,12 @@ public class PoisonGUI extends javax.swing.JInternalFrame {
             .addGroup(parametrosPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(parametrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(simularButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(parametrosPanelLayout.createSequentialGroup()
+                        .addComponent(simularButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1))
                     .addGroup(parametrosPanelLayout.createSequentialGroup()
                         .addGroup(parametrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -120,7 +137,10 @@ public class PoisonGUI extends javax.swing.JInternalFrame {
                     .addComponent(paramObservacionesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(observacionesValidador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(simularButton)
+                .addGroup(parametrosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(simularButton)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -159,8 +179,8 @@ public class PoisonGUI extends javax.swing.JInternalFrame {
             contenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+                .addGap(40, 40, 40))
         );
 
         getContentPane().add(contenedorPanel, java.awt.BorderLayout.CENTER);
@@ -173,7 +193,7 @@ public class PoisonGUI extends javax.swing.JInternalFrame {
             double media = Double.parseDouble(paramMediaTextField.getText());
             int observaciones = Integer.parseInt(paramObservacionesTextField.getText());
             Poison p = new Poison(media);
-            double[] datos = p.getObservaciones(observaciones);
+            datos = p.getObservaciones(observaciones);
             //arrayToModel(p.getObservaciones(observaciones));
             datosTable.setModel(arrayToModel(datos));
 
@@ -185,6 +205,10 @@ public class PoisonGUI extends javax.swing.JInternalFrame {
             contenedorPanel.updateUI();
         }
     }//GEN-LAST:event_simularButtonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new Archivos().guardarObservaciones(datos, "POI");
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public DefaultTableModel arrayToModel(double[] datos) {
         Object[][] odatos = new Object[datos.length][2];
@@ -200,6 +224,8 @@ public class PoisonGUI extends javax.swing.JInternalFrame {
     private javax.swing.JPanel contenedorPanel;
     private javax.swing.JTable datosTable;
     private javax.swing.JPanel graficaPanel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;

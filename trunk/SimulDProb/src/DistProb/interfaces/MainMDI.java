@@ -10,6 +10,7 @@
  */
 package DistProb.interfaces;
 
+import interfaces.ArchivosGUI;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,6 +48,7 @@ public class MainMDI extends javax.swing.JFrame {
         normalButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        abrirMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -132,7 +134,16 @@ public class MainMDI extends javax.swing.JFrame {
 
         getContentPane().add(menuPrincipalToolBar, java.awt.BorderLayout.PAGE_START);
 
-        jMenu1.setText("File");
+        jMenu1.setText("Archivo");
+
+        abrirMenuItem.setText("Abrir");
+        abrirMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrirMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(abrirMenuItem);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Distribuciones de Probabilidad");
@@ -188,6 +199,10 @@ public class MainMDI extends javax.swing.JFrame {
         addInternalWindow("normal");
     }//GEN-LAST:event_normalButtonActionPerformed
 
+    private void abrirMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirMenuItemActionPerformed
+        new ArchivosGUI(this, true).setVisible(true);
+    }//GEN-LAST:event_abrirMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -219,6 +234,7 @@ public class MainMDI extends javax.swing.JFrame {
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem abrirMenuItem;
     private javax.swing.JDesktopPane contenedorDesktopPane;
     private javax.swing.JButton exponencialButton;
     private javax.swing.JButton geometricaButton;

@@ -7,7 +7,6 @@ package interfaces;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -24,7 +23,6 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.HorizontalAlignment;
 import org.jfree.ui.RectangleEdge;
-import org.jfree.ui.RefineryUtilities;
 
 public class Grafica extends ApplicationFrame {
 

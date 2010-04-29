@@ -66,7 +66,9 @@ public class GraficaContinua extends ApplicationFrame {
 
 
         for (int i = 0; i < resultados.length; i++) {
-            serie.add(resultados[i],i);
+            
+                serie.add(i, resultados[i]);
+            
         }
         /* dataset.addValue(212, "Continua", "x");
         dataset.addValue(504, "Continua", "y");
@@ -88,26 +90,26 @@ public class GraficaContinua extends ApplicationFrame {
 
         // create the chart...
         final JFreeChart chart = ChartFactory.createXYLineChart(
-            "Line Chart Demo 6",      // chart title
-            "X",                      // x axis label
-            "Y",                      // y axis label
-            dataset,                  // data
-            PlotOrientation.VERTICAL,
-            true,                     // include legend
-            true,                     // tooltips
-            false                     // urls
-        );
+                "Line Chart Demo 6", // chart title
+                "X", // x axis label
+                "Y", // y axis label
+                dataset, // data
+                PlotOrientation.VERTICAL,
+                true, // include legend
+                true, // tooltips
+                false // urls
+                );
 
         // NOW DO SOME OPTIONAL CUSTOMISATION OF THE CHART...
         chart.setBackgroundPaint(Color.white);
 
 //        final StandardLegend legend = (StandardLegend) chart.getLegend();
-  //      legend.setDisplaySeriesShapes(true);
+        //      legend.setDisplaySeriesShapes(true);
 
         // get a reference to the plot for further customisation...
         final XYPlot plot = chart.getXYPlot();
         plot.setBackgroundPaint(Color.lightGray);
-    //    plot.setAxisOffset(new Spacer(Spacer.ABSOLUTE, 5.0, 5.0, 5.0, 5.0));
+        //    plot.setAxisOffset(new Spacer(Spacer.ABSOLUTE, 5.0, 5.0, 5.0, 5.0));
         plot.setDomainGridlinePaint(Color.white);
         plot.setRangeGridlinePaint(Color.white);
 
@@ -136,19 +138,15 @@ public class GraficaContinua extends ApplicationFrame {
     // * Sales are used to provide funding for the JFreeChart project - please    *
     // * support us so that we can continue developing free software.             *
     // ****************************************************************************
-
     /**
      * Starting point for the demonstration application.
      *
      * @param args  ignored.
      */
     public static void main(final String[] args) {
-
 //        final LineChartDemo6 demo = new LineChartDemo6("Line Chart Demo 6");
 //        demo.pack();
 //        RefineryUtilities.centerFrameOnScreen(demo);
 //        demo.setVisible(true);
-
     }
-
 }
