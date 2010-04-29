@@ -36,11 +36,10 @@ public class DistribucionProbabilidadUtil {
     }
 
     public double[][] obtenerProbabilidad(double[][] frecuencia, int nObservaciones) {
-        double[][] ret = new double[10][3];
+        double[][] ret = new double[10][2];
         for (int i = 0; i < 10; i++) {
-            ret[i][0] = frecuencia[i][0];
-            ret[i][1] = frecuencia[i][1];
-            ret[i][2] = frecuencia[i][2] / nObservaciones;
+            ret[i][0] = (frecuencia[i][1]-frecuencia[i][0])/2+frecuencia[i][0];
+            ret[i][1] = frecuencia[i][2] / nObservaciones;
 
         }
         return ret;
@@ -49,12 +48,10 @@ public class DistribucionProbabilidadUtil {
     public double[][] obtenerAcumulada(double[][] distribucion) {
         double[][] ret = new double[10][3];
         ret[0][0] = distribucion[0][0];
-        ret[0][1] = distribucion[0][1];
-        ret[0][2] = distribucion[0][2];
+        ret[0][2] = distribucion[0][1];
         for (int i = 1; i < 10; i++) {
             ret[i][0] = distribucion[i][0];
-            ret[i][1] = distribucion[i][1];
-            ret[i][2] = distribucion[i][2] + distribucion[i - 1][2];
+            ret[i][2] = distribucion[i][1] + distribucion[i - 1][1];
 
         }
         return ret;
