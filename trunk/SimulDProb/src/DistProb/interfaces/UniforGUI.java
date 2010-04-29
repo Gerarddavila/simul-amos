@@ -10,6 +10,7 @@
  */
 package DistProb.interfaces;
 
+import DistProb.DistribucionProbabilidadUtil;
 import DistProb.Poison;
 import DistProb.Unifor;
 import interfaces.Grafica;
@@ -197,8 +198,11 @@ public class UniforGUI extends javax.swing.JInternalFrame {
             double a = Double.parseDouble(paramATextField.getText());
             double b = Double.parseDouble(paramBTextField.getText());
             int observaciones = Integer.parseInt(paramObservacionesTextField.getText());
+
             Unifor u = new Unifor(a,b);
             double[] datos = u.getObservaciones(observaciones);
+
+            
             //arrayToModel(p.getObservaciones(observaciones));
             datosTable.setModel(arrayToModel(datos));
 

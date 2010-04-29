@@ -10,6 +10,7 @@
  */
 package DistProb.interfaces;
 
+import DistProb.DistribucionProbabilidadUtil;
 import DistProb.Geometrica;
 import DistProb.Poison;
 import interfaces.Grafica;
@@ -176,6 +177,8 @@ public class GeometricaGUI extends javax.swing.JInternalFrame {
 
             Geometrica geo = new Geometrica();
             double[] datos = geo.getObservaciones(observaciones,q);
+
+           double[][] frec = new DistribucionProbabilidadUtil().obtenerTablaFrecuencia(datos);
             //arrayToModel(p.getObservaciones(observaciones));
             datosTable.setModel(arrayToModel(datos));
 
