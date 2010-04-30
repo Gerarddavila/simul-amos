@@ -26,24 +26,33 @@ import org.jfree.ui.RectangleEdge;
 
 public class Grafica extends ApplicationFrame {
 
-    double resultados[];
+    double resultados[][];
     int tamanio = 0;
+    boolean esAcumulada;
 
-    public Grafica(String title, double resultados[]) {
+    public Grafica(String title, double resultados[][], boolean esAcumulada) {
         super(title);
         this.resultados = resultados;
+        this.esAcumulada = esAcumulada;
         tamanio = resultados.length;
         CategoryDataset dataset = createDataset();
         JFreeChart chart = createChart(dataset);
         ChartPanel panel = new ChartPanel(chart);
         panel.setPreferredSize(new Dimension(500, 270));
         this.setContentPane(panel);
+
     }
 
-    private static JFreeChart createChart(CategoryDataset dataset) {
-        JFreeChart chart = ChartFactory.createLineChart("Distribucion Exponencial", "Release", "Class Count", dataset, PlotOrientation.VERTICAL, false, true, false);
-        chart.addSubtitle(new TextTitle("Observaciones"));
-        TextTitle source = new TextTitle("Distribucion Exponencial");
+    private JFreeChart createChart(CategoryDataset dataset) {
+        JFreeChart chart = ChartFactory.createLineChart(this.getTitle(), "x", esAcumulada?"F(x)":"f(x)",
+                dataset, PlotOrientation.VERTICAL,
+                false, true, false);
+        if (esAcumulada) {
+            chart.addSubtitle(new TextTitle("Distribucion de probabilidad acumulada"));
+        } else {
+            chart.addSubtitle(new TextTitle("Distribucion de probabilidad"));
+        }
+        TextTitle source = new TextTitle(this.getTitle());
         source.setFont(new Font("SansSerif", Font.PLAIN, 10));
         source.setPosition(RectangleEdge.BOTTOM);
         source.setHorizontalAlignment(HorizontalAlignment.RIGHT);
@@ -79,11 +88,11 @@ public class Grafica extends ApplicationFrame {
 
         /* while (salir==1){
         }*/
-        java.util.Arrays.sort(resultados);
+        //java.util.Arrays.sort(resultados);
 
 
-        for (int i = 0; i < tamanio; i++) {
-            dataset.addValue(i, "Continua", "" + resultados[i]);
+        for (int i = 0; i < 10; i++) {
+            dataset.addValue(resultados[i][1],"",""+resultados[i][0]);
         }
         /* dataset.addValue(212, "Continua", "x");
         dataset.addValue(504, "Continua", "y");
