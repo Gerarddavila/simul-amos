@@ -49,6 +49,7 @@ public class GeometricaGUI extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         parametrosPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -63,6 +64,12 @@ public class GeometricaGUI extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         datosTable = new javax.swing.JTable();
         graficaPanel = new javax.swing.JPanel();
+        graficoProbPanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        probTable = new javax.swing.JTable();
+        graficoAcumPanel = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        acumTable = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
@@ -128,6 +135,8 @@ public class GeometricaGUI extends javax.swing.JInternalFrame {
 
         getContentPane().add(parametrosPanel, java.awt.BorderLayout.NORTH);
 
+        contenedorPanel.setLayout(new java.awt.BorderLayout());
+
         jSplitPane1.setDividerLocation(150);
         jSplitPane1.setContinuousLayout(true);
         jSplitPane1.setOneTouchExpandable(true);
@@ -148,22 +157,65 @@ public class GeometricaGUI extends javax.swing.JInternalFrame {
         jSplitPane1.setLeftComponent(jScrollPane1);
 
         graficaPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        graficaPanel.setLayout(new java.awt.BorderLayout());
+
+        graficoProbPanel.setLayout(new java.awt.BorderLayout());
+
+        probTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(probTable);
+
+        graficoAcumPanel.setLayout(new java.awt.BorderLayout());
+
+        acumTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(acumTable);
+
+        javax.swing.GroupLayout graficaPanelLayout = new javax.swing.GroupLayout(graficaPanel);
+        graficaPanel.setLayout(graficaPanelLayout);
+        graficaPanelLayout.setHorizontalGroup(
+            graficaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(graficaPanelLayout.createSequentialGroup()
+                .addGroup(graficaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(graficoProbPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(graficaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(graficoAcumPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)))
+        );
+        graficaPanelLayout.setVerticalGroup(
+            graficaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, graficaPanelLayout.createSequentialGroup()
+                .addGroup(graficaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(graficoProbPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addComponent(graficoAcumPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(graficaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane2, 0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)))
+        );
+
         jSplitPane1.setRightComponent(graficaPanel);
 
-        javax.swing.GroupLayout contenedorPanelLayout = new javax.swing.GroupLayout(contenedorPanel);
-        contenedorPanel.setLayout(contenedorPanelLayout);
-        contenedorPanelLayout.setHorizontalGroup(
-            contenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
-        );
-        contenedorPanelLayout.setVerticalGroup(
-            contenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenedorPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        contenedorPanel.add(jSplitPane1, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(contenedorPanel, java.awt.BorderLayout.CENTER);
 
@@ -176,44 +228,70 @@ public class GeometricaGUI extends javax.swing.JInternalFrame {
             int observaciones = Integer.parseInt(paramObservacionesTextField.getText());
 
             Geometrica geo = new Geometrica();
-            double[] datos = geo.getObservaciones(observaciones,q);
+            double[] datos = geo.getObservaciones(observaciones, q);
+            datosTable.setModel(arrayToModel(datos,new String[]{"observacion","dato"}));
 
-           double[][] frec = new DistribucionProbabilidadUtil().obtenerTablaFrecuencia(datos);
-           double[][] prob = new DistribucionProbabilidadUtil().obtenerProbabilidad(frec, observaciones);
+            double[][] frec = new DistribucionProbabilidadUtil().obtenerTablaFrecuencia(datos);
+            double[][] prob = new DistribucionProbabilidadUtil().obtenerProbabilidad(frec, observaciones);
+            double[][] acum = new DistribucionProbabilidadUtil().obtenerAcumulada(prob);
             //arrayToModel(p.getObservaciones(observaciones));
-            datosTable.setModel(arrayToModel(prob));
-
-            Grafica g = new Grafica("Grafico", datos);
-            graficaPanel.removeAll();
-            graficaPanel.add(g.createDemoPanel());
             
+            Grafica gp = new Grafica("Distribucion Geometrica", prob, false);
+            graficoProbPanel.removeAll();
+            graficoProbPanel.add(gp.createDemoPanel());
+            probTable.setModel(arrayToModel(prob, new String[]{"Intervalo","Probabilidad"}));
+
+            Grafica ga = new Grafica("Distribucion Geometrica", acum, true);
+            graficoAcumPanel.removeAll();
+            graficoAcumPanel.add(ga.createDemoPanel());
+            acumTable.setModel(arrayToModel(acum, new String[]{"Intervalo","Probabilidad Acumulada"}));
+
+
             jSplitPane1.setVisible(true);
             contenedorPanel.updateUI();
         }
     }//GEN-LAST:event_simularButtonActionPerformed
 
-    public DefaultTableModel arrayToModel(double[][] datos) {
+    public DefaultTableModel arrayToModel(double[][] datos, String[] cols) {
+        Object[][] odatos = new Object[datos.length][datos[0].length];
+        for (int i = 0; i < datos.length; i++) {
+            for (int j = 0; j < datos[0].length; j++) {
+                odatos[i][j] = datos[i][j];
+
+            }
+        }
+        //Object[] coln = new Object[]{"Observacion", "Dato"};
+        DefaultTableModel dtm = new DefaultTableModel(odatos,cols);
+        return dtm;
+    }
+
+    public DefaultTableModel arrayToModel(double[] datos, String[] cols) {
         Object[][] odatos = new Object[datos.length][2];
         for (int i = 0; i < datos.length; i++) {
-            odatos[i][0] = datos[i][0];
-            odatos[i][1] = datos[i][1];
-        }
-        Object[] coln = new Object[]{"Observacion", "Dato"};
-        DefaultTableModel dtm = new DefaultTableModel(odatos, coln);
+            odatos[i][0] = i+1;
+            odatos[i][1] = datos[i];
+        }        
+        DefaultTableModel dtm = new DefaultTableModel(odatos, cols);
         return dtm;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable acumTable;
     private javax.swing.JPanel contenedorPanel;
     private javax.swing.JTable datosTable;
     private javax.swing.JPanel graficaPanel;
+    private javax.swing.JPanel graficoAcumPanel;
+    private javax.swing.JPanel graficoProbPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSplitPane jSplitPane1;
     private validadores.api.ValidadorJTextComponent observacionesValidador;
     private javax.swing.JTextField paramObservacionesTextField;
     private javax.swing.JTextField paramQTextField;
     private javax.swing.JPanel parametrosPanel;
+    private javax.swing.JTable probTable;
     private validadores.api.ValidadorJTextComponent qValidador;
     private javax.swing.JButton simularButton;
     // End of variables declaration//GEN-END:variables

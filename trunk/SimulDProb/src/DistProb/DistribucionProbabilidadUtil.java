@@ -19,7 +19,11 @@ public class DistribucionProbabilidadUtil {
         double max = observaciones[observaciones.length - 1];
         double tam = (max - min) / 10;
         for (int i = 0; i < 10; i++) {
-            ret[i][0] = min + (tam * i) + 0.01;
+            if (i > 0) {
+                ret[i][0] = min + (tam * i) + 0.01;
+            } else {
+                ret[i][0] = min + (tam * i);
+            }
             ret[i][1] = min + (tam * (i + 1));
             ret[i][2] = 0.0;
         }
@@ -38,21 +42,20 @@ public class DistribucionProbabilidadUtil {
     public double[][] obtenerProbabilidad(double[][] frecuencia, int nObservaciones) {
         double[][] ret = new double[10][2];
         for (int i = 0; i < 10; i++) {
-            ret[i][0] = (frecuencia[i][1]-frecuencia[i][0])/2+frecuencia[i][0];
+            ret[i][0] = (frecuencia[i][1] - frecuencia[i][0]) / 2 + frecuencia[i][0];
             ret[i][1] = frecuencia[i][2] / nObservaciones;
 
         }
         return ret;
     }
 
-    public double[][] obtenerAcumulada(double[][] distribucion) {
-        double[][] ret = new double[10][3];
-        ret[0][0] = distribucion[0][0];
-        ret[0][2] = distribucion[0][1];
-        for (int i = 1; i < 10; i++) {
-            ret[i][0] = distribucion[i][0];
-            ret[i][2] = distribucion[i][1] + distribucion[i - 1][1];
-
+    public double[][] obtenerAcumulada(double[][] probabilidad) {
+        double[][] ret = new double[10][2];
+        double acum = 0.0;
+        for (int i = 0; i < 10; i++) {
+            acum = acum + probabilidad[i][1];
+            ret[i][0] = probabilidad[i][0];
+            ret[i][1] = acum;
         }
         return ret;
     }

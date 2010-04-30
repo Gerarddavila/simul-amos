@@ -197,7 +197,7 @@ public class PoisonGUI extends javax.swing.JInternalFrame {
             //arrayToModel(p.getObservaciones(observaciones));
             datosTable.setModel(arrayToModel(datos));
 
-            Grafica g = new Grafica("Grafico", datos);
+            Grafica g = new Grafica("Grafico", datos,false);
             graficaPanel.removeAll();
             graficaPanel.add(g.createDemoPanel());
             
