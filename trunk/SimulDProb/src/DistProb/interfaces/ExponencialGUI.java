@@ -1,12 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * PoisonGUI.java
+ /* PoisonGUI.java
  *
- * Created on 04-17-2010, 02:30:57 PM
+ * Creado el 17-04-2010, 02:30:57 PM
  */
 package DistProb.interfaces;
 
@@ -21,24 +15,33 @@ import validadores.validadoresformato.DoubleValidador;
 import validadores.validadoresformato.EnteroValidador;
 
 /**
- *
+ *ESTA CLASE IMPLEMENTA LA INTERFAZ GRAFICA DE LA DISTRIBUCION EXPONENCIAL.
  * @author Steve
  */
 public class ExponencialGUI extends javax.swing.JInternalFrame {
 
+    //creamos un objeto de una clase con la que se valida el formulario.
     GrupoValidador validadorFormulario = new GrupoValidador();
 
     /** Creates new form PoisonGUI */
     public ExponencialGUI() {
-        initComponents();
+        initComponents();//se inicializan los componentes de la ventana
+
+
+        //A este metodo se le envia el JTextField como parametro
+        //Aqui se configura el tipo de validacion, en este caso que se digite un numero real positivo.
         mediaValidador.configurarValidacion(paramMediaTextField,
                 true,
                 "Ingrese el valor de la media",
                 new DoubleValidador("Ingrese un numero real", DoubleValidador.CONFIGURACIONES.POSITIVO, "Dato incorrecto. Ingrese un numero real"));
 
+//A este metodo se le envia como parametro el JTextField que captura el numero de observaciones.
+//Aqui se configura el tipo de validacion, en este caso que se digite un numero real positivo.
         observacionesValidador.configurarValidacion(paramObservacionesTextField, true, "Ingrese el numero de observaciones", new EnteroValidador("Ingrese el numero entero", EnteroValidador.CONFIGURACIONES.POSITIVO, "Dato Incorrecto. Ingrese un entero"));
+        //Se Validan los formularios segun la configuracion del metodo configurarValidacion
         validadorFormulario.add(mediaValidador, observacionesValidador);
-        jSplitPane1.setVisible(false);
+
+        jSplitPane1.setVisible(false);//Un separador de ventana se deja invisible por el momento.
     }
 
     /** This method is called from within the constructor to
@@ -172,29 +175,41 @@ public class ExponencialGUI extends javax.swing.JInternalFrame {
 
     private void simularButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simularButtonActionPerformed
         if (validadorFormulario.validar()) {
+            //si la informacion en los JTextField es la correcta, se toman los valores
+            //Entero y Real de los JTextField para ser utilizados para los algoritmos.
             double media = Double.parseDouble(paramMediaTextField.getText());
             int observaciones = Integer.parseInt(paramObservacionesTextField.getText());
 
+            //Se crea un objeto de la clase Expone y se envia la media capturada como parametro.
             Expone exp = new Expone(media);
+            //Aqui se obtienen las observaciones guardadas en un vector.
+            //el tamaño del arreglo equivale al numero de observaciones realizadas.
             double[] datos = exp.getObservaciones(observaciones);
             //arrayToModel(p.getObservaciones(observaciones));
+
+            //Aqui se define el modelo de la tabla que mostrara las observaciones
             datosTable.setModel(arrayToModel(datos));
 
+            //una vez se tienen todas las observaciones se crea un objeto de tipo GraficaContinua
+            //Se envia un titulo al constructor y el arreglo de las observaciones para graficar
+            //la distribucion de probabilidad.
             GraficaContinua g = new GraficaContinua("Grafico", datos);
-            graficaPanel.removeAll();
-            graficaPanel.add(g.createDemoPanel());
+            graficaPanel.removeAll();//Se borra todo del panel antes de graficar.
+            graficaPanel.add(g.createDemoPanel());//se agrega la grafica al panel.
             
-            jSplitPane1.setVisible(true);
-            contenedorPanel.updateUI();
+            jSplitPane1.setVisible(true);//El separador de ventana es visible.
+            contenedorPanel.updateUI();//Se dibujan todos los componentes del panel otra vez.
         }
     }//GEN-LAST:event_simularButtonActionPerformed
 
     public DefaultTableModel arrayToModel(double[] datos) {
+        //Se define una tabla  con un numero de filas igual al numero de observciones.
         Object[][] odatos = new Object[datos.length][2];
         for (int i = 0; i < datos.length; i++) {
             odatos[i][0] = 1 + i;
             odatos[i][1] = datos[i];
         }
+        //La tabla tiene 2 columnas y sus encabezados son  Observacion y Dato.
         Object[] coln = new Object[]{"Observacion", "Dato"};
         DefaultTableModel dtm = new DefaultTableModel(odatos, coln);
         return dtm;
