@@ -1,15 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package interfaces;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-
 import javax.swing.JPanel;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -27,24 +21,21 @@ import org.jfree.ui.RectangleEdge;
 public class Grafica extends ApplicationFrame {
 
     double resultados[][];
-    int tamanio = 0;
     boolean esAcumulada;
 
     public Grafica(String title, double resultados[][], boolean esAcumulada) {
         super(title);
         this.resultados = resultados;
         this.esAcumulada = esAcumulada;
-        tamanio = resultados.length;
         CategoryDataset dataset = createDataset();
         JFreeChart chart = createChart(dataset);
         ChartPanel panel = new ChartPanel(chart);
         panel.setPreferredSize(new Dimension(500, 270));
         this.setContentPane(panel);
-
     }
 
     private JFreeChart createChart(CategoryDataset dataset) {
-        JFreeChart chart = ChartFactory.createLineChart(this.getTitle(), "x", esAcumulada?"F(x)":"f(x)",
+        JFreeChart chart = ChartFactory.createLineChart(this.getTitle(), "x", esAcumulada ? "F(x)" : "f(x)",
                 dataset, PlotOrientation.VERTICAL,
                 false, true, false);
         if (esAcumulada) {
@@ -59,14 +50,11 @@ public class Grafica extends ApplicationFrame {
         chart.addSubtitle(source);
 
         chart.setBackgroundPaint(Color.white);
-
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         plot.setBackgroundPaint(Color.LIGHT_GRAY);
         plot.setRangeGridlinePaint(Color.white);
-
         NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
         rangeAxis.setStandardTickUnits(NumberAxis.createStandardTickUnits());
-
         LineAndShapeRenderer renderer = (LineAndShapeRenderer) plot.getRenderer();
         renderer.setShapesVisible(true);
         renderer.setDrawOutlines(true);
@@ -82,30 +70,10 @@ public class Grafica extends ApplicationFrame {
     }
 
     private CategoryDataset createDataset() {
-
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        int salir = 1;
-
-        /* while (salir==1){
-        }*/
-        //java.util.Arrays.sort(resultados);
-
-
         for (int i = 0; i < 10; i++) {
-            dataset.addValue(resultados[i][1],"",""+resultados[i][0]);
+            dataset.addValue(resultados[i][1], "", "" + resultados[i][0]);
         }
-        /* dataset.addValue(212, "Continua", "x");
-        dataset.addValue(504, "Continua", "y");
-        dataset.addValue(1520, "Continua", "");
-        dataset.addValue(1842, "Continua", "");
-        dataset.addValue(2991, "Continua", "");*/
-
         return dataset;
     }
-    /* public static void main(String[] args) {
-    Grafica demo = new Grafica("EXPONECIAL");
-    demo.pack();
-    RefineryUtilities.centerFrameOnScreen(demo);
-    demo.setVisible(true);
-    }*/
 }
