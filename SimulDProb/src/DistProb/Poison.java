@@ -1,66 +1,101 @@
-/*
- * Este codigo implementa la distribucion de probabilidad Poison
- *
- */
+
 package DistProb;
 
 /**
- *
+ * Este codigo implementa la distribucion de probabilidad Poison
  * @author Steve
  */
+
 public class Poison {
 
     double media; //se declara la media lamda
     double[] observaciones=null;//se declara un arreglo de double
 
+    /**
+     * Poison: Este es el constructor de la clase
+     * @param media: Es la media del ejercicio que se asigna a un
+     * atributo de esta clase.
+     */
     public Poison(double media) {
-        this.media = media;//se recibe la media por parametro
-        //se le asigna a la variable media de esta clase.
+        this.media = media;
     }
-
+/**
+ * Poison: Este metodo retorna un entero generado por otro metodo Poison
+ * donde se manda la media como parametro.
+ *
+ */
     public int Poison() {
         //este metodo retorna el resultado del metodo Poison con media como parametro.
         return Poison(this.media);
     }
 
+/*
+ * Poison: Este metodo implementa el algoritmo de la distribucion Poison
+ * de libro Tecnicas de simulacion del Ing. Carlos Ernesto Garcia.
+ * prod obtiene un valor generado de manera pseudo aleatoria
+ * si prod es mayor o igual que k  se incrementa el numero de exitos x.
+ * return x: Se retorna el numero de exitos hacia una posicion de un arreglo
+ * que contiene el numero de exitos por cada observacion.
+ */
+
     public int Poison(double media) {
-        //este metodo implementa el algoritmo del libro Tecnicas de simulacion
-        //del Ing. Carlos Ernesto Garcia.
+        
         int x = 0;
         double k = Math.exp(media * -1);
         double prod = Math.random();
         while (prod >= k) {
-            x++;//si el valor pseudo aleatorio es mayor o igual que k
-            //x que es el numero de exitos  se incrementa.
+            x++;
+
             prod = prod*Math.random();
-            //prod es igual a el mismo
+            
         }
-        return x;//se regresa el numero de exitos a una posicion del arreglo
+        return x;
     }
 
+    /**
+     * getObservaciones: Este metodo retorna el valor generado por
+     * otro metodo getObservaciones. Este solo se ejecutara cuando necesitamos que
+     * el usuario ingrese el numero de observaciones a realizar.
+     * @param nobservaciones: Numero de observaciones a realizar.
+     *
+     */
     public double[] getObservaciones(int nobservaciones) {
-        //retorna el valor generado por el metodo getObservaciones
+        
         return getObservaciones(nobservaciones, this.media);
     }
-
+/**
+ * getObservaciones: Este metodo genera un arreglo de elementos tipo double
+ * de tamano igual al numero de observaciones a realizar.
+ *
+ * @param nObservaciones: Numero de observaciones a realizar.
+ * @param media: Media Lambda del ejercicio
+ * @return observaciones: Se retorna el arreglo con las observaciones realizadas.
+ */
     public double[] getObservaciones(int nObservaciones, double media) {
-        //se crea un arreglo de tamano igual al numero de observaciones a realizar.
+       
         this.observaciones = new double[nObservaciones];
 
         for (int i = 0; i < nObservaciones; i++) {
-            //el valor de la posicion del arreglo es igual a lo que devuelva
-            //el metodo llamado Poison
+       
+       
             this.observaciones[i] = Poison(media);
         }
-        return this.observaciones;//se retorna el arreglo con las observaciones realizadas.
+        return this.observaciones;
     }
 
+    /**
+     *getMedia: Este metodo retorna la media del ejercicio.
+     *
+     */
     public double getMedia() {
-        //este metodo devuelve la media lamda
+        
         return this.media;
     }
 
-    
+    /**
+     * getVarianza: Este metodo retorna la varianza del ejercicio.
+     *
+     */
     public double getVarianza() {
         return this.media;
     }
