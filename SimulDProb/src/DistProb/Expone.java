@@ -17,7 +17,7 @@ public class Expone {
     /**
      * Este es el constructor de la clase
      *
-     * @param Media: Es el valor de la media lambda necesaria para
+     * @param Media: Es el valor de la media  necesaria para
      * la distribucion.
      */
     public Expone(double Media) {
@@ -48,8 +48,7 @@ public class Expone {
      * @return getObservaciones(nobservaciones, this.media) : Se retorna un arreglo double.
      */
      public double[] getObservaciones(int nobservaciones) {
-         //se retorna el vector con las observaciones
-         //obtenidas del otro metodo getObservaciones
+        
         return getObservaciones(nobservaciones, this.media);
     }
 
@@ -58,7 +57,7 @@ public class Expone {
       * igual al numero de observaciones a realizar el cual devuelve un valor
       * x igual al numero de exitos.
       * @param nObservaciones: Es el numero de observaciones a realizar.
-      * @param media: Es la media Lambda del ejercicio.
+      * @param media: Es la media del ejercicio.
       * @return observaciones: Se retorna el arreglo que contiene todos los exitos de
       * todas las observaciones realizadas.
       */
