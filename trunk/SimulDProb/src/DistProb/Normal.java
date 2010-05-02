@@ -42,12 +42,12 @@ public class Normal {
     public double Normal(double Media, double DStd) {
         double Suma = 0;
         for (int i = 1; i <= 12; i++) {
-            //r obtiene el valor pseudo aleatorio
+            
             double r = Math.random();
-            Suma = Suma + r;//Suma acumula el valor de los valores aleatorios
+            Suma = Suma + r;
         }
-        //x obtiene el valor del algoritmo del libro del ing Carlos Ernesto Garcia
+       
         double x = DStd * (Suma - 6) + Media;
-        return x;//se retorna x
+        return x;
     }
 }
