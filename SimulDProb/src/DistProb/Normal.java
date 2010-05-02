@@ -1,32 +1,44 @@
-/*
- * Este codigo implementa la distribucion de probabilidad Normal.
- *
- */
+
 package DistProb;
 
-/**
- *
+/*
+ * Este codigo implementa la distribucion de probabilidad Normal.
  * @author Emerson
+ *
  */
+ 
 public class Normal {
 
+
+/**
+ * getObservaciones: Este metodo invoca al metodo que implementa el algoritmo
+ * de la distribucion normal
+ * @param nObservaciones: Es el numero de observaciones a realizar
+ * @param Media: Es la media necesaria para la distribucion normal.
+ * @param DStd: Es la desviacion estandar del experimento
+ * @return observaciones: Se retorna el arreglo con las observaciones hechas.
+ */
     public double[] getObservaciones(int nObservaciones, double Media, double DStd) {
-         //Se crea un arreglo double del tamano del numero de observaciones
-        //realizadas por el usuario.
+      
         double[] observaciones = new double[nObservaciones];
 
-        //segun el numero de observaciones decididas por el usuario
-        //asi se invoca el metodo Normal el cual devuelve el valor x
-        //para ser guardado en el arreglo de observaciones
 
         for (int i = 0; i < nObservaciones; i++) {
-            //Al metodo Normal se envia por parametro la media.
+           
             observaciones[i] = Normal(Media, DStd);
         }
 
-        return observaciones;//se retorna el arreglo de observaciones
+        return observaciones;
     }
 
+    /**
+     * Normal: este metodo implementa el algoritmo de la distribucion normal
+     * del libro tecnicas de simulacion del Ing. Carlos Ernesto Garcia.
+     * r contiene un valor generado de manera pseudo aleatoria.
+     * @param Media: Es la media del ejercicio.
+     * @param DStd: Es la distribucion estandar del ejercicio.
+     * @return x: Es el numero de exitos que ocurren segun el valor de Suma.
+     */
     public double Normal(double Media, double DStd) {
         double Suma = 0;
         for (int i = 1; i <= 12; i++) {
