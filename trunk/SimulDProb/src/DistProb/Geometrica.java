@@ -1,39 +1,52 @@
 /*
- * Este codigo implementa la distribucion de probabilidad Geometrica.
+ * 
  *
  */
 package DistProb;
 
 /**
- *
+ *Este codigo implementa la distribucion de probabilidad Geometrica.
  * @author Emerson
  */
 public class Geometrica {
-    
+
+    /**
+     * getObsrvaciones: Este metodo ejecuta el metodo Geomet
+     * el cual implementa el algoritmo de la distribucion geometrica
+     *
+     * @param nObservaciones: Numero de observaciones a realizar
+     * @param q: Valor pseudo aleatorio.
+     * @return observaciones: se devuelve el arreglo con los resultados.
+     */
     public double [] getObservaciones(int nObservaciones, double q){
-        //Se crea un arreglo double del tamano del numero de observaciones
-        //realizadas por el usuario.
+        
         double [] observaciones= new double[nObservaciones];
 
         for (int i=0;i<nObservaciones;i++){
 
-        observaciones[i]=Geomet(q);//El arreglo recibe el valor x del metodo Geomet.
+        observaciones[i]=Geomet(q);
         }
         
         return observaciones;
     } 
-    
+
+    /**
+     * Geomet: Este metodo implementa el algoritmo de la distribucion
+     * geometrica del libro tecnicas de simulacion del Ing. Carlos Ernesto Garcia.
+     * @param q: Es la probabilidad de fracaso.
+     * r es la probabilidad de realizar el experimento.
+     * @return x: retorna el numero de intentos que se pudieron realizar incluyendo
+     * el intento donde ocurrio el exito.
+     */
     public int Geomet(double q){
-        //Se ejecuta el algoritmo de la distribucion
-            //geometrica del Ing.Carlos Ernesto Garcia.
-            //Este se ejecuta un numero de veces igual al numero de observaciones.
-        int x=1;//el algoritmo empieza con x=1, osea la primera observacion realizada
-        double r=Math.random(); //r obtiene un valor pseudo aleatorio.
-        while(r>q){ //mientras r>q
-        x++;//se sigue realizando mas obseraciones y se cuentan.
-        r=Math.random();//una vez mas r obitene un valor pseudo aleatorio.
+        
+        int x=1;
+        double r=Math.random(); 
+        while(r>q){
+        x++;
+        r=Math.random();
         }
-        return x;//se retorna x.
+        return x;
     }
 
 }
