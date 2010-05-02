@@ -24,6 +24,13 @@ import org.apache.commons.lang.StringUtils;
  */
 public class Archivos {
 
+    /**
+     * Este metodo guarda los resultados de las observaciones realizadas en un archivo
+     * para que puedan ser estudiados en cualquier momento.
+     * @param observaciones: Numero de observacines realizadas.
+     * @param tipoDis: Es el tipo de distribucion implementada.
+     *
+     */
     public int guardarObservaciones(double []observaciones, String tipoDis){
         int codigoRetorno=0;
         try{
@@ -61,6 +68,7 @@ public class Archivos {
     return codigoRetorno;
     }
 
+
     public class Filtro implements FilenameFilter{
         String dist;
 
@@ -73,6 +81,12 @@ public class Archivos {
 
     }
 
+    /**
+     * Este metodo busca archivos con resultados guardados
+     * segun la distribucion que elija el usuario.
+     * @param tipoDis: Es el tipo de distribucion a buscar
+     * @return archivos: Retorna un arreglo con los nombres de los archivos.
+     */
     public String [] listarArchivos(String tipoDis){
         CargarConfiguraciones cc= new CargarConfiguraciones();
         String ruta = cc.getValor("RUTA");
@@ -93,6 +107,12 @@ public class Archivos {
     public void saveFile(File archivo, String ruta){
 
     }
+    /**
+     * Este busca un archivo segun el nombre previamente seleccionado
+     * lo abre y obtiene de este las observaciones guardadas en el archivo.
+     * @param nombreArchivo
+     * @throws IOException
+     */
     public void leerArchivo(String nombreArchivo) throws IOException{
         try {
         CargarConfiguraciones cc= new CargarConfiguraciones();
